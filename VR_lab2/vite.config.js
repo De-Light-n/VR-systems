@@ -1,12 +1,10 @@
-import { defineConfig } from 'vite';
-import basicSsl from '@vitejs/plugin-basic-ssl';
+import { defineConfig } from "vite";
+import basicSsl from "@vitejs/plugin-basic-ssl";
 
 export default defineConfig({
-  base: '/VR-systems/',
-  plugins: [
-    basicSsl()
-  ],
+  base: "/VR-systems/",
+  plugins: [basicSsl()],
   server: {
-    host: true
-  }
+    host: true,
+  },
 });

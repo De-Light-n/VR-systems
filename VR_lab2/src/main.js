@@ -184,7 +184,6 @@ function initTask1() {
 // Запуск меню вибору завдань
 showMenu();
 
-
 function initTask2() {
   // Очистити body
   document.body.innerHTML = "";
