@@ -4,6 +4,59 @@ import { ARButton } from "three/examples/jsm/webxr/ARButton.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 // ============================================
+// МЕНЮ ВИБОРУ ЗАВДАНЬ
+// ============================================
+
+function showMenu() {
+  document.body.innerHTML = "";
+  document.body.style.cssText =
+    "margin:0; background:#1a1a2e; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; font-family:Arial,sans-serif;";
+
+  const title = document.createElement("h1");
+  title.textContent = "AR Лабораторна робота 2";
+  title.style.cssText =
+    "color:white; margin-bottom:10px; text-align:center; font-size:28px;";
+  document.body.appendChild(title);
+
+  const subtitle = document.createElement("p");
+  subtitle.textContent = "Оберіть завдання для запуску";
+  subtitle.style.cssText =
+    "color:rgba(255,255,255,0.6); margin-bottom:40px; font-size:16px;";
+  document.body.appendChild(subtitle);
+
+  const tasks = [
+    { num: 1, name: "Геометричні фігури з анімацією", fn: initTask1 },
+    { num: 2, name: "3D модель планети (Lava Planet)", fn: initTask2 },
+    { num: 3, name: "Hit Test + Зірки (ExtrudeGeometry)", fn: initTask3 },
+    { num: 4, name: "Hit Test + Музичні інструменти", fn: initTask4 },
+  ];
+
+  tasks.forEach(({ num, name, fn }) => {
+    const btn = document.createElement("button");
+    btn.innerHTML = `<strong>Завдання ${num}</strong><br><small style="opacity:0.8">${name}</small>`;
+    btn.style.cssText =
+      "display:block; width:320px; margin:10px; padding:18px 24px; background:rgba(255,255,255,0.08); color:white; border:1px solid rgba(255,255,255,0.25); border-radius:12px; cursor:pointer; font-size:16px; text-align:center;";
+    btn.addEventListener("mouseover", () => {
+      btn.style.background = "rgba(255,255,255,0.2)";
+    });
+    btn.addEventListener("mouseout", () => {
+      btn.style.background = "rgba(255,255,255,0.08)";
+    });
+    btn.addEventListener("click", fn);
+    document.body.appendChild(btn);
+  });
+}
+
+function addBackButton() {
+  const btn = document.createElement("button");
+  btn.textContent = "\u2190 Меню";
+  btn.style.cssText =
+    "position:absolute; top:20px; left:20px; z-index:9999; padding:10px 20px; background:rgba(0,0,0,0.7); color:white; border:1px solid rgba(255,255,255,0.5); border-radius:8px; cursor:pointer; font-size:15px; font-family:Arial,sans-serif;";
+  btn.addEventListener("click", showMenu);
+  document.body.appendChild(btn);
+}
+
+// ============================================
 // ЗАВДАННЯ 1: Геометричні фігури з анімацією
 // ============================================
 
@@ -124,20 +177,12 @@ function initTask1() {
   });
 
   // Запустити анімацію
+  addBackButton();
   animate();
 }
 
-// Запуск Завдання 1
-// initTask1();
-
-// Запуск Завдання 2
-// initTask2();
-
-// Запуск Завдання 3
-// initTask3();
-
-// Запуск Завдання 4
-initTask4();
+// Запуск меню вибору завдань
+showMenu();
 
 
 function initTask2() {
@@ -239,6 +284,7 @@ function initTask2() {
   });
 
   // Запустити анімацію
+  addBackButton();
   animate();
 }
 
@@ -433,6 +479,7 @@ function initTask3() {
   });
 
   // Запустити анімацію
+  addBackButton();
   renderer.setAnimationLoop(animate);
 }
 
@@ -707,5 +754,6 @@ function initTask4() {
   });
 
   // Запустити анімацію
+  addBackButton();
   renderer.setAnimationLoop(animate);
 }
