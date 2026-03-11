@@ -232,7 +232,7 @@ function initTask2() {
 
   // Завантаження моделі
   loader.load(
-    "/lava_planet.glb", // Шлях до моделі
+    `${import.meta.env.BASE_URL}lava_planet.glb`, // Шлях до моделі
     // onLoad callback
     (gltf) => {
       planetModel = gltf.scene;
@@ -574,7 +574,7 @@ function initTask4() {
 
   // Завантаження гітари
   loader.load(
-    "/gitar_blend_2.glb",
+    `${import.meta.env.BASE_URL}gitar_blend_2.glb`,
     (gltf) => {
       guitarModel = gltf.scene;
       guitarModel.scale.set(0.3, 0.3, 0.3);
@@ -593,7 +593,7 @@ function initTask4() {
 
   // Завантаження барабанів
   loader.load(
-    "/drum_set_with_blender_armature.glb",
+    `${import.meta.env.BASE_URL}drum_set_with_blender_armature.glb`,
     (gltf) => {
       drumModel = gltf.scene;
       drumModel.scale.set(0.3, 0.3, 0.3);
